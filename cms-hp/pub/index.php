@@ -31,5 +31,5 @@ Route::add('/upload', function() {
     header("Location: http://localhost/KNAGA/cms-hp/pub/");
 }, 'post');
 
-Route::run('KNAGA/cms-hp/pub');
+Route::run('/KNAGA/cms-hp/pub');
 ?>
