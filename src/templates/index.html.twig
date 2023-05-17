@@ -1,0 +1,37 @@
+{% include 'header.html.twig' %}
+<div id="pageContainer">
+ 
+
+   
+<h1>{{pageTitle}}</h1>
+{% if  user is defined %}
+<div id="loggedUser" style="color:white">
+    Zalogowany użytkownik: {{ user.getName }}
+</div>   
+
+{% endif%}
+{% for post in postArray %}
+<div id="post">
+    <h6>Tytuł: {{post.getTitle()}}</h6>
+    <h6>Autor: {{post.getAuthorName()}}</h6>
+    <img src="{{post.getFilename()}}">
+    <h6>Data dodania: {{post.getTimestamp()}}</h6>
+    <h6>Ilość polubień: {{post.getLikeCount()}}</h6>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="postID" value="{{ post.getID }}">
+        <input type="hidden" name="userID" value="{{ user.getID }}">
+        <button type="submit" name="like">+</button>
+    </form>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="postID" value="{{ post.getID }}">
+        <input type="hidden" name="userID" value="{{ user.getID }}">
+        <button type="submit" name="dislike">-</button>
+    </form>
+
+
+</div>
+{% endfor %}  
+
+
+{% include 'footer.html.twig' %}    
+</div>
